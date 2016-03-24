@@ -62,7 +62,5 @@ module.exports = function(content) {
 
   this.emitFile(calculateHtmlPath(options.cwd, resourcePath), result);
 
-  return `module.exports = ${babel.transform(code, {
-    presets: ['es2015', 'react'],
-  }).code}`;
+  return code;
 }
