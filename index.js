@@ -5,7 +5,6 @@ const loaderUtils = require('loader-utils');
 // const webpack = require('webpack');
 const MT = require('mark-twain');
 const R = require('ramda');
-const babel = require('babel-core');
 const ejs = require('ejs');
 
 const isCode = R.compose(R.contains(R.__, ['js', 'jsx', 'javascript']), R.path(['props', 'lang']));
