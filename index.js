@@ -31,6 +31,7 @@ module.exports = function(content) {
   const name = path.relative(options.cwd, resourcePath);
 
   const fileContentTree = MT(content).content;
+  const meta = MT(content).meta;
 
   const code = getChildren(fileContentTree.find(isCode));
   const style = getChildren(fileContentTree.find(isStyle));
@@ -50,7 +51,8 @@ module.exports = function(content) {
 
   const result = ejs.render(fs.readFileSync(tpl, 'utf-8'), {
     file: {
-      title: name,
+      meta: meta,
+      title: meta.name || name,
       // script: common ? scripts : scripts.slice(1),
       script: scripts,
       html: html,
