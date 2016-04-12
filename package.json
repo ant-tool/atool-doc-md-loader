@@ -1,6 +1,6 @@
 {
   "name": "atool-doc-md-loader",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Convert md file to a js file and generate a html file",
   "main": "index.js",
   "scripts": {
