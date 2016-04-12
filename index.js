@@ -49,10 +49,15 @@ module.exports = function(content) {
     `${path.basename(resourcePath, path.extname(resourcePath))}.js`,
   ];
 
+  const link = {};
+  Object.keys(options.entry).forEach(function(key) {
+    link[key] = path.relative('../', path.relative(name, key));
+  });
+
   const result = ejs.render(fs.readFileSync(tpl, 'utf-8'), {
     file: {
       meta: meta,
-      link: options.entry,
+      link: link,
       title: meta.title || name,
       // script: common ? scripts : scripts.slice(1),
       script: scripts,
