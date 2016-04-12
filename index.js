@@ -52,7 +52,8 @@ module.exports = function(content) {
   const result = ejs.render(fs.readFileSync(tpl, 'utf-8'), {
     file: {
       meta: meta,
-      title: meta.name || name,
+      link: options.entry,
+      title: meta.title || name,
       // script: common ? scripts : scripts.slice(1),
       script: scripts,
       html: html,
