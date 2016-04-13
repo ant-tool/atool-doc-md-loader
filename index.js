@@ -50,6 +50,7 @@ module.exports = function(content) {
   ];
 
   const link = {};
+  link['Index'] = path.relative('../', path.relative(name, './index'));
   Object.keys(options.entry).forEach(function(key) {
     link[key] = path.relative('../', path.relative(name, key));
   });
