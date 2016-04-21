@@ -25,10 +25,9 @@ module.exports = function(content) {
 
   const options = this.options;
   const resourcePath = this.resourcePath;
+  const resource = new util.Resource(options.cwd, options.demoSource, resourcePath);
 
   const query = loaderUtils.parseQuery(this.query);
-
-  const name = path.relative(options.cwd, resourcePath);
 
   const fileContentTree = MT(content).content;
   const meta = MT(content).meta;
@@ -45,21 +44,22 @@ module.exports = function(content) {
   // });
 
   const scripts = [
-    path.relative(resourcePath, path.join(options.cwd, options.tplSource, 'common.js')),
-    `${path.basename(resourcePath, path.extname(resourcePath))}.js`,
+    path.relative(resourcePath, path.join(resource.demoPath, 'common.js')),
+    `${resource.name}.js`,
   ];
 
   const link = {};
-  link['Index'] = path.relative('../', path.relative(name, './index'));
+  link['Index'] = path.relative('../', path.relative(resource.path, './index'));
   Object.keys(options.entry).forEach(function(key) {
-    link[key] = path.relative('../', path.relative(name, key));
+    link[path.relative(options.demoSource, key)] = path.relative('../', path.relative(resource.path, key));
   });
 
   const result = ejs.render(fs.readFileSync(tpl, 'utf-8'), {
     file: {
       meta: meta,
       link: link,
-      title: meta.title || name,
+      title: meta.title || resource.relativeToCwd + resource.ext,
+      resource: resource,
       // script: common ? scripts : scripts.slice(1),
       script: scripts,
       html: html,

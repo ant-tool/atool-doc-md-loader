@@ -1,6 +1,6 @@
 {
   "name": "atool-doc-md-loader",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Convert md file to a js file and generate a html file",
   "main": "index.js",
   "scripts": {
@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/ant-tool/atool-doc-md-loader#readme",
   "dependencies": {
-    "atool-doc-util": "~0.0.1",
+    "atool-doc-util": "~0.1.0",
     "ejs": "~2.4.1",
     "loader-utils": "~0.2.12",
     "mark-twain": "~0.2.0-beta.4",
