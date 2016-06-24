@@ -64,6 +64,7 @@ module.exports = function(content) {
       script: scripts,
       html: html,
       style: style,
+      query: query,
       desc: util.marked(fileContentTree),
     },
   });
